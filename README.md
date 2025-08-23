@@ -1,97 +1,269 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+# Slide Cab Driver App
 
-# Getting Started
+A comprehensive React Native application for ride-hailing drivers built with modern technologies and best practices.
 
-> **Note**: Make sure you have completed the [Set Up Your Environment](https://reactnative.dev/docs/set-up-your-environment) guide before proceeding.
+## 🏗️ Project Structure
 
-## Step 1: Start Metro
+```
+src/
+├── assets/
+│   ├── fonts/           # Custom fonts
+│   ├── images/          # Static images
+│   └── svgs/           # SVG files
+├── components/         # Reusable UI components
+├── models/            # TypeScript interfaces and types
+├── navigations/       # Navigation configuration
+├── redux/
+│   ├── api/           # RTK Query API slices
+│   ├── slices/        # Redux Toolkit slices
+│   └── store/         # Store configuration
+├── utils/
+│   └── resources/     # Colors, dimensions, constants
+└── views/
+    ├── popups/        # Modal/popup components
+    └── screens/       # App screens
+```
 
-First, you will need to run **Metro**, the JavaScript build tool for React Native.
+## 📱 Features
 
-To start the Metro dev server, run the following command from the root of your React Native project:
+- **Authentication**: Login/Register screens with Redux state management
+- **Driver Status**: Online/Offline toggle functionality
+- **Real-time Location**: GPS tracking and location updates
+- **Earnings**: Track daily and total earnings
+- **Navigation**: Multi-level navigation with tabs and stacks
+- **Firebase Integration**: Push notifications and crash reporting
+- **Maps Integration**: Google Maps with location services
+- **MQTT**: Real-time communication
+- **Modern UI**: Responsive design with consistent styling
 
-```sh
-# Using npm
-npm start
+## 🚀 Technologies Used
 
-# OR using Yarn
+- **React Native 0.81**
+- **TypeScript**
+- **Redux Toolkit** - State management
+- **RTK Query** - API calls and caching
+- **React Navigation** - Navigation solution
+- **Firebase** - Push notifications, analytics, crashlytics
+- **React Native Maps** - Map integration
+- **React Native SVG** - SVG support
+- **MQTT** - Real-time messaging
+- **React Native Toast** - Toast notifications
+
+## 📋 Prerequisites
+
+- Node.js >= 16
+- React Native development environment
+- Xcode (for iOS development)
+- Android Studio (for Android development)
+- CocoaPods (for iOS dependencies)
+
+## ⚙️ Installation
+
+1. **Clone the repository**
+
+   ```bash
+   git clone <repository-url>
+   cd slide_cab_driver_rn2
+   ```
+
+2. **Install dependencies**
+
+   ```bash
+   yarn install
+   ```
+
+3. **iOS Setup**
+   ```bash
+   cd ios
+   # Note: You may need to use arm64 architecture for M1/M2 Macs
+   arch -arm64 pod install
+   cd ..
+   ```
+
+## 🔧 Configuration
+
+### Firebase Setup
+
+1. **Android Configuration**
+
+   - Add your `google-services.json` file to `android/app/`
+   - Update `YOUR_GOOGLE_MAPS_API_KEY` in `android/app/src/main/AndroidManifest.xml`
+
+2. **iOS Configuration**
+   - Add your `GoogleService-Info.plist` file to `ios/slide_cab_driver_rn2/`
+   - Update Google Maps API key in iOS configuration
+
+### Google Maps API
+
+1. Get API keys from [Google Cloud Console](https://console.cloud.google.com/)
+2. Enable required APIs:
+   - Maps SDK for Android
+   - Maps SDK for iOS
+   - Places API
+   - Directions API
+
+### Environment Variables
+
+Create a `.env` file in the root directory:
+
+```env
+GOOGLE_MAPS_API_KEY=your_api_key_here
+API_BASE_URL=https://your-api-url.com
+```
+
+## 🏃‍♂️ Running the App
+
+### Development
+
+```bash
+# Start Metro bundler
 yarn start
-```
 
-## Step 2: Build and run your app
-
-With Metro running, open a new terminal window/pane from the root of your React Native project, and use one of the following commands to build and run your Android or iOS app:
-
-### Android
-
-```sh
-# Using npm
-npm run android
-
-# OR using Yarn
+# Run on Android
 yarn android
-```
 
-### iOS
-
-For iOS, remember to install CocoaPods dependencies (this only needs to be run on first clone or after updating native deps).
-
-The first time you create a new project, run the Ruby bundler to install CocoaPods itself:
-
-```sh
-bundle install
-```
-
-Then, and every time you update your native dependencies, run:
-
-```sh
-bundle exec pod install
-```
-
-For more information, please visit [CocoaPods Getting Started guide](https://guides.cocoapods.org/using/getting-started.html).
-
-```sh
-# Using npm
-npm run ios
-
-# OR using Yarn
+# Run on iOS
 yarn ios
 ```
 
-If everything is set up correctly, you should see your new app running in the Android Emulator, iOS Simulator, or your connected device.
+### Production Build
 
-This is one way to run your app — you can also build it directly from Android Studio or Xcode.
+```bash
+# Android
+cd android
+./gradlew assembleRelease
 
-## Step 3: Modify your app
+# iOS
+# Use Xcode to build for production
+```
 
-Now that you have successfully run the app, let's make changes!
+## 📱 App Screens
 
-Open `App.tsx` in your text editor of choice and make some changes. When you save, your app will automatically update and reflect these changes — this is powered by [Fast Refresh](https://reactnative.dev/docs/fast-refresh).
+### Authentication Flow
 
-When you want to forcefully reload, for example to reset the state of your app, you can perform a full reload:
+- **LoginScreen**: Driver login
+- **RegisterScreen**: Driver registration
 
-- **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Dev Menu**, accessed via <kbd>Ctrl</kbd> + <kbd>M</kbd> (Windows/Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (macOS).
-- **iOS**: Press <kbd>R</kbd> in iOS Simulator.
+### Main App Flow
 
-## Congratulations! :tada:
+- **HomeScreen**: Driver status and trip management
+- **EarningsScreen**: View earnings and statistics
+- **ProfileScreen**: Driver profile and settings
+- **TripDetailsScreen**: Detailed trip information
 
-You've successfully run and modified your React Native App. :partying_face:
+## 🔑 Key Files to Modify
 
-### Now what?
+### API Configuration
 
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [docs](https://reactnative.dev/docs/getting-started).
+- `src/redux/api/apiSlice.ts` - Update base URL and endpoints
 
-# Troubleshooting
+### Firebase Configuration
 
-If you're having issues getting the above steps to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
+- `src/utils/firebase.ts` - Firebase services setup
 
-# Learn More
+### Theme and Styling
 
-To learn more about React Native, take a look at the following resources:
+- `src/utils/resources/colors.ts` - App color scheme
+- `src/utils/resources/dimensions.ts` - Spacing and sizing
 
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+### Redux State
+
+- `src/redux/slices/authSlice.ts` - Authentication state
+- `src/redux/slices/driverSlice.ts` - Driver-specific state
+
+## 🐛 Known Issues & Solutions
+
+### iOS Pod Installation
+
+If you encounter deployment target issues:
+
+1. Update iOS deployment target to 14.0+ in Podfile
+2. Use arm64 architecture for M1/M2 Macs:
+   ```bash
+   arch -arm64 pod install
+   ```
+
+### Firebase Version Compatibility
+
+Firebase dependencies are automatically managed by React Native Firebase. Avoid manually adding Firebase pods to Podfile.
+
+## 📱 Permissions
+
+### Android Permissions (Already Added)
+
+- `ACCESS_FINE_LOCATION`
+- `ACCESS_COARSE_LOCATION`
+- `INTERNET`
+- `WAKE_LOCK`
+- `RECEIVE_BOOT_COMPLETED`
+- `VIBRATE`
+- `FOREGROUND_SERVICE`
+- `POST_NOTIFICATIONS`
+
+### iOS Permissions (Already Added)
+
+- Location services (when in use and always)
+- Push notifications
+- Camera access
+- Photo library access
+
+## 🔄 State Management
+
+The app uses Redux Toolkit with the following structure:
+
+- **Auth Slice**: User authentication state
+- **Driver Slice**: Driver status, location, trips, earnings
+- **API Slice**: RTK Query for server communication
+
+## 🗺️ Navigation Structure
+
+```
+AppNavigator
+├── AuthNavigator (when not authenticated)
+│   ├── LoginScreen
+│   └── RegisterScreen
+└── MainNavigator (when authenticated)
+    ├── MainTabs
+    │   ├── HomeScreen
+    │   ├── EarningsScreen
+    │   └── ProfileScreen
+    └── TripDetailsScreen
+```
+
+## 🚧 Next Steps
+
+1. **Add Firebase Configuration Files**
+
+   - `google-services.json` for Android
+   - `GoogleService-Info.plist` for iOS
+
+2. **Configure API Endpoints**
+
+   - Update base URL in `src/redux/api/apiSlice.ts`
+   - Add your actual API endpoints
+
+3. **Customize UI/UX**
+
+   - Update colors and branding
+   - Add your app icons and splash screens
+
+4. **Testing**
+   - Run the app on both platforms
+   - Test Firebase notifications
+   - Test location services
+
+## 📞 Support
+
+For issues and questions:
+
+1. Check the troubleshooting section
+2. Review React Native and Firebase documentation
+3. Check individual library documentation for specific issues
+
+## 📄 License
+
+[Add your license information here]
+
+---
+
+**Built with ❤️ using React Native and modern mobile development practices**

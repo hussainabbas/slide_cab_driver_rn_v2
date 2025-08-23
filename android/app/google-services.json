@@ -1,0 +1,67 @@
+{
+  "project_info": {
+    "project_number": "62785765121",
+    "project_id": "slidebase-afa1a",
+    "storage_bucket": "slidebase-afa1a.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:62785765121:android:e305f98294921dd3532500",
+        "android_client_info": {
+          "package_name": "com.mmm.cabscanner"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAVsds0bqEhVBTFgk3A6R0VWGYT5RC257o"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:62785765121:android:3261c55b74420d68532500",
+        "android_client_info": {
+          "package_name": "com.mmm.cabscanner.staging"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAVsds0bqEhVBTFgk3A6R0VWGYT5RC257o"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:62785765121:android:5bac1f56c80c3759532500",
+        "android_client_info": {
+          "package_name": "com.slidecabdriver"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAVsds0bqEhVBTFgk3A6R0VWGYT5RC257o"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

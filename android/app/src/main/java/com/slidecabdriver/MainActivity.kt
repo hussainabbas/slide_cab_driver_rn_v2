@@ -1,4 +1,4 @@
-package com.slide_cab_driver_rn2
+package com.slidecabdriver
 
 import com.facebook.react.ReactActivity
 import com.facebook.react.ReactActivityDelegate

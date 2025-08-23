@@ -32,7 +32,17 @@
 		<true/>
 	</dict>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string></string>
+	<string>This app needs location access to show your current location on the map and provide location-based services.</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>This app needs location access to provide real-time location tracking for ride services.</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>This app needs always location access to provide real-time location tracking for ride services.</string>
+	<key>NSUserNotificationsUsageDescription</key>
+	<string>This app uses notifications to keep you updated about ride requests and important updates.</string>
+	<key>NSCameraUsageDescription</key>
+	<string>This app needs camera access to take photos for profile and documentation purposes.</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>This app needs photo library access to select images for profile and documentation purposes.</string>
 	<key>RCTNewArchEnabled</key>
 	<false/>
 	<key>UILaunchStoryboardName</key>
