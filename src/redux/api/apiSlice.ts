@@ -36,3 +36,5 @@ export const api = createApi({
 });
 
 export const { useGetProfileQuery, useUpdateLocationMutation } = api;
+
+

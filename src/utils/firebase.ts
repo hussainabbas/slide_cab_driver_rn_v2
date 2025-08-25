@@ -77,3 +77,5 @@ export const logCrashlyticsEvent = (event: string, attributes?: object) => {
 export const recordCrashlyticsError = (error: Error) => {
   crashlytics().recordError(error);
 };
+
+

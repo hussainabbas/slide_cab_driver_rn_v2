@@ -20,3 +20,4 @@ export interface VehicleInfo {
   plateNumber: string;
   type: 'sedan' | 'suv' | 'hatchback' | 'truck' | 'motorcycle';
 }
+

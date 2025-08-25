@@ -1,68 +1,69 @@
-import React from 'react';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import React, { useState } from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
+import { View, Modal } from 'react-native';
 import HomeScreen from '../views/screens/HomeScreen';
 import EarningsScreen from '../views/screens/EarningsScreen';
 import ProfileScreen from '../views/screens/ProfileScreen';
 import TripDetailsScreen from '../views/screens/TripDetailsScreen';
+import DrawerContent from '../components/DrawerContent';
 
-export type MainTabParamList = {
+export type MainStackParamList = {
   Home: undefined;
   Earnings: undefined;
   Profile: undefined;
-};
-
-export type MainStackParamList = {
-  MainTabs: undefined;
+  TripHistory: undefined;
+  Settings: undefined;
+  Support: undefined;
   TripDetails: { tripId: string };
 };
 
-const Tab = createBottomTabNavigator<MainTabParamList>();
 const Stack = createStackNavigator<MainStackParamList>();
 
-const MainTabs: React.FC = () => {
-  return (
-    <Tab.Navigator
-      screenOptions={{
-        headerShown: false,
-        tabBarStyle: {
-          backgroundColor: '#fff',
-          borderTopWidth: 1,
-          borderTopColor: '#e0e0e0',
-        },
-      }}
-    >
-      <Tab.Screen
-        name="Home"
-        component={HomeScreen}
-        options={{
-          tabBarLabel: 'Home',
-        }}
-      />
-      <Tab.Screen
-        name="Earnings"
-        component={EarningsScreen}
-        options={{
-          tabBarLabel: 'Earnings',
-        }}
-      />
-      <Tab.Screen
-        name="Profile"
-        component={ProfileScreen}
-        options={{
-          tabBarLabel: 'Profile',
-        }}
-      />
-    </Tab.Navigator>
-  );
-};
-
 const MainNavigator: React.FC = () => {
+  const [drawerVisible, setDrawerVisible] = useState(false);
+
+  const openDrawer = () => setDrawerVisible(true);
+  const closeDrawer = () => setDrawerVisible(false);
+
   return (
-    <Stack.Navigator screenOptions={{ headerShown: false }}>
-      <Stack.Screen name="MainTabs" component={MainTabs} />
-      <Stack.Screen name="TripDetails" component={TripDetailsScreen} />
-    </Stack.Navigator>
+    <View style={{ flex: 1 }}>
+      <Stack.Navigator screenOptions={{ headerShown: false }}>
+        <Stack.Screen name="Home">
+          {props => <HomeScreen {...props} openDrawer={openDrawer} />}
+        </Stack.Screen>
+        <Stack.Screen name="Earnings" component={EarningsScreen} />
+        <Stack.Screen name="Profile" component={ProfileScreen} />
+        <Stack.Screen name="TripHistory" component={ProfileScreen} />
+        <Stack.Screen name="Settings" component={ProfileScreen} />
+        <Stack.Screen name="Support" component={ProfileScreen} />
+        <Stack.Screen name="TripDetails" component={TripDetailsScreen} />
+      </Stack.Navigator>
+
+      <Modal
+        visible={drawerVisible}
+        transparent={true}
+        animationType="slide"
+        onRequestClose={closeDrawer}
+      >
+        <View style={{ flex: 1, flexDirection: 'row' }}>
+          <View style={{ width: '75%', backgroundColor: 'white' }}>
+            <DrawerContent
+              navigation={{
+                navigate: (screen: string) => {
+                  closeDrawer();
+                  // Handle navigation here
+                },
+                closeDrawer,
+              }}
+            />
+          </View>
+          <View 
+            style={{ flex: 1, backgroundColor: 'rgba(0,0,0,0.5)' }}
+            onTouchEnd={closeDrawer}
+          />
+        </View>
+      </Modal>
+    </View>
   );
 };
 
